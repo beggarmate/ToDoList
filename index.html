@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Ledger:regular"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <div class="header__container container">
+          <div class="add-tasks-button-container">
+            <div class="add-tasks-button add-tasks-open-button">
+              Открыть список дел
+            </div>
+            <div class="add-tasks-button add-tasks-close-button display-none">
+              Закрыть
+            </div>
+          </div>
+        </div>
+      </header>
+      <main class="main">
+        <div class="main__container container">
+          <div class="todo-box display-none">
+            <div class="todo__menu menu">
+              <form action="" class="form">
+                <input
+                  type="text"
+                  autocomplete="off"
+                  name="taskInput"
+                  class="input"
+                />
+                <button class="task-submit" type="submit">Добавить</button>
+              </form>
+            </div>
+            <div class="todo__list">
+              <ul class="todo__list-ul"></ul>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+    <script type="module" src="script.js"></script>
+  </body>
+</html>
