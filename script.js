@@ -19,7 +19,7 @@ const showToDoList = () => {
   toDoBox.classList.toggle("display-none");
 };
 
-addTaskButton.addEventListener("mouseup", (event) => {
+addTaskButton.addEventListener("click", (event) => {
   swapAddTaskButton();
   showToDoList();
 });
@@ -36,13 +36,19 @@ const taskObject = {
     newLi.classList.add(taskObject.listItemClass);
     return newLi;
   },
+
   newLiAddInUl: (newLi) => {
     toDoUl.append(newLi);
+  },
+
+  newLiAddDraggableAttribute: (newLi) => {
+    newLi.setAttribute("draggable", "true");
   },
 
   createNewTask: (text) => {
     const newLi = taskObject.newLiAddClass(taskObject.createNewLi());
     taskObject.newLiAddInUl(newLi);
+    taskObject.newLiAddDraggableAttribute(newLi);
     newLi.textContent = text;
   },
 };
