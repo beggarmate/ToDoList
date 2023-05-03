@@ -27,6 +27,8 @@ addTaskButton.addEventListener("click", (event) => {
 const taskObject = {
   listItemClass: "todo__list-item",
 
+  dataId: 0,
+
   createNewLi: () => {
     const newLi = document.createElement("li");
     return newLi;
@@ -43,13 +45,40 @@ const taskObject = {
 
   newLiAddDraggableAttribute: (newLi) => {
     newLi.setAttribute("draggable", "true");
+    newLi.setAttribute("data-Id", taskObject.dataId);
+  },
+
+  createNewDeleteButton: function () {
+    const button = document.createElement("button");
+    button.textContent = "X";
+    button.className = "delete-button";
+    button.setAttribute("data-Id", taskObject.dataId);
+    taskObject.dataId++;
+    button.addEventListener("click", (event) => {
+      const { target } = event;
+      const deleteElement = document.body.querySelector(
+        `[data-Id="${target.dataset.id}"]`
+      );
+      deleteElement.remove();
+    });
+    return button;
+  },
+
+  correthLengthText: (text) => {
+    // if (text.length > 86) {
+    //   return text.slice(0, 86);
+    // }
+    return text;
   },
 
   createNewTask: (text) => {
     const newLi = taskObject.newLiAddClass(taskObject.createNewLi());
     taskObject.newLiAddInUl(newLi);
     taskObject.newLiAddDraggableAttribute(newLi);
-    newLi.textContent = text;
+    newLi.append(taskObject.createNewDeleteButton());
+    const newP = document.createElement("p");
+    newP.textContent = taskObject.correthLengthText(text);
+    newLi.prepend(newP);
   },
 };
 
